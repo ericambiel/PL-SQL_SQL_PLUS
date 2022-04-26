@@ -10,7 +10,7 @@ BEGIN
     ELSIF v_place = 'Amazon' THEN
         DBMS_OUTPUT.PUT_LINE('City is protected by Wonder Woman');
     ELSE
-        DBMS_OUTPUT.PUT_LINE('The place you give not protect by Avengers');
+        DBMS_OUTPUT.PUT_LINE('The place you give not protect by Justice League');
     END IF;
     DBMS_OUTPUT.PUT_LINE('Thanks for contacting us !!!');
 END;

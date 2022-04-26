@@ -1,6 +1,15 @@
 -- Show session parameters Language
 SELECT * FROM NLS_SESSION_PARAMETERS
 
+-- Show quotas to specific User
+SELECT username,tablespace_name,bytes/1024/1024/1024, MAX_BYTES/1024/1024/1024
+FROM dba_ts_quotas
+WHERE username='TEST_DB';
+
+-- Grant unlimited quota to specific user;
+ALTER USER TEST_DB QUOTA UNLIMITED ON USERS;
+GRANT UNLIMITED TABLESPACE TO TEST_DB;
+
 --SET SERVEROUTPUT ON;
 DECLARE
 	v_test	VARCHAR(15);
@@ -8,15 +17,6 @@ BEGIN
 	v_test := 'Eric Ambiel';
 	DBMS_OUTPUT.PUT_LINE(v_test);
 END;
-
--- Grant unlimited quota to specific user;
-ALTER USER TEST_DB QUOTA UNLIMITED ON USERS;
-GRANT UNLIMITED TABLESPACE TO TEST_DB;
-
--- Show quotas to specific User
-SELECT username,tablespace_name,bytes/1024/1024/1024, MAX_BYTES/1024/1024/1024
-FROM dba_ts_quotas
-WHERE username='TEST_DB';
 
 -- Class 3 --
 -- Create Table
